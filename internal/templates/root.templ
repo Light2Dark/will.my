@@ -1,0 +1,13 @@
+package templates
+
+import "github.com/Light2Dark/death/internal/components"
+
+templ Root() {
+	@components.Layout(Form())
+}
+
+templ Form() {
+	<div class="bg-slate-200 h-screen">
+		<p>Hello!</p>
+	</div>
+}

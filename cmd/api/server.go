@@ -38,9 +38,7 @@ func main() {
 	})
 
 	router.HandleFunc("GET /healthcheck", app.healthcheckHandler)
-	router.HandleFunc("GET /", app.homeHandler)
-	router.HandleFunc("GET /mainInfo", app.mainInfoHandler)
-	router.HandleFunc("GET /explanation", app.explanationHandler)
+	router.HandleFunc("GET /", app.rootHandler)
 
 	server := http.Server{
 		Addr:    fmt.Sprintf(":%d", *port),
