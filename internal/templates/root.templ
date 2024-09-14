@@ -3,11 +3,44 @@ package templates
 import "github.com/Light2Dark/death/internal/components"
 
 templ Root() {
-	@components.Layout(Form())
+	@components.Layout(Body())
+}
+
+templ Body() {
+	<div class="bg-slate-200 h-screen flex items-center">
+		<div class="md:w-1/2 mx-auto">
+			<h1 class="text-center mb-4 text-2xl">Your Will</h1>
+			@Form()
+			<div class="mt-8 text-center">
+				<p id="submitResult"></p>
+			</div>
+		</div>
+	</div>
 }
 
 templ Form() {
-	<div class="bg-slate-200 h-screen">
-		<p>Hello!</p>
+	<form hx-post="/submitForm" hx-target="#submitResult" method="POST" hx-on::after-request=" if(event.detail.successful) this.reset()" class="flex flex-col gap-6 border border-black p-12 rounded-lg">
+		@Input("name", "Full Name", "text")
+		@Input("email", "Email Address", "email")
+
+		<div class="flex flex-col">
+			<label for="will">Will</label>
+			<textarea name="will" id="will" required class="py-0.5 px-1 rounded-md"></textarea>
+		</div>
+
+		<div class="flex justify-center">
+			<button type="submit" class="py-2 px-3 rounded-lg bg-slate-700 text-white w-min active:bg-slate-950">Submit</button>
+		</div>
+	</form>
+}
+
+templ Input(id string, label string, inputType string) {
+	<div class="flex flex-col">
+		<label for={id}>{label}</label>
+		<input type={inputType} id={id} name={id} required class="w-3/4 py-0.5 px-1 rounded-md"/>
 	</div>
+}
+
+templ JobResult(message string) {
+	<p>{message}</p>
 }
