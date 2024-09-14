@@ -1,2 +1,4 @@
 *.env
 .vscode
+**/htmx.min.js
+**/tailwindcss
