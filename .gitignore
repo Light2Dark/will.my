@@ -2,3 +2,4 @@
 .vscode
 **/htmx.min.js
 **/tailwindcss
+bin/*
