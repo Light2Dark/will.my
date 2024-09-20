@@ -13,5 +13,5 @@ make setup          # Installs wgo, templ
 make dev            # Start a server locally
 make dev port=9000  # Start a server at a specific port
 
-make build          # Build the binary and create docker image
+make build          # Build the binary and create docker image 
 ```
